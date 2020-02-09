@@ -11,13 +11,8 @@ Photo Gallery application implemented using Django(backend) and Angular(frontend
     cd your_environment_name
     source bin/activate
     ```
-
-3. Clone this repository (this would make rebasing easier).
-    ```
-    git clone https://github.com/samyak047/fsf_2019_screening_task1
-    ```
-    
-4. Install the dependencies for the project.
+   
+3. Install the dependencies for the backend.
     ```
     cd fsf_2019_screening_task1
     pip install -r requirements.txt
