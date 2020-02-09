@@ -31,7 +31,7 @@ Dependencies:
 
 5. Install Node Modules for Frontend AngularJS (node & npm must be installed)
    ```
-   cd ../PhotoGalleryApplication/frontend/PhotoGalleryApplicaton
+   cd ../PhotoGalleryApplication/frontend
    npm install --save
    ```
    try
