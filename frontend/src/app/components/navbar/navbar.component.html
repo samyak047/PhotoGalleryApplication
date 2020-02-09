@@ -1,0 +1,14 @@
+
+<div class="d-flex justify-content-between">
+<div style="padding-top : 2%;padding-left : 3%">
+    <h1> Photo Gallery </h1>
+</div>
+    <div style="padding-top : 3%;padding-right : 3%">
+    <div *ngIf="username">
+        <button style="margin: 20px;" mat-raised-button color="warn" (click)="home()">Home</button>
+        <button style="margin: 20px;" mat-raised-button color="warn" (click)="addAlbum()">Add Album</button>
+        <button style="margin: 20px;" mat-raised-button color="warn" (click)="profile()">{{username}}</button>
+        <button style="margin: 20px;" mat-raised-button color="warn" (click)="logout()">Sign out</button>
+    </div>
+    </div>
+</div>

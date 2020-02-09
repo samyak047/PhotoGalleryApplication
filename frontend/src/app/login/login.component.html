@@ -1,0 +1,32 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="card">
+          <br><br><br>
+          <div class="card-header card-header-danger">
+            Login
+          </div>
+          <br><br><br>
+              <form #loginForm="ngForm" style="align-items: center; align-self: center;" (ngSubmit)="login(loginForm)">
+                  <mat-form-field style="width: 50%;">
+                      <input matInput placeholder="Username" name="username" [(ngModel)]="username">
+                  </mat-form-field>
+                  <br/>
+                  <mat-form-field style="width: 50%;">
+                      <input matInput [type] = "show ? 'text' : 'password'" placeholder="Password" name="password" [(ngModel)]="password">
+                    </mat-form-field>
+                    <a><i (click)="onToggle()" class="material-icons">{{class}}</i></a>
+                    
+                    <div *ngIf="message">
+                        {{message}}
+                    </div>
+                <button style="align-self: center; width:50%" type="submit" mat-raised-button color="warn">Login</button>
+              </form>
+              <br>
+              <br>
+              <a style="align-self: center;" href="/register">Create an account</a>
+                <!-- <button style="align-self: center; width:40%" type="submit" mat-raised-button color="warn">Create an Account</button> -->
+              
+        </div>
+  </div>
+
+</div>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Album Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<div class="container">
+  <h2>Album Page</h2>
+  <br>
+  <strong>Created at : {{album.created_at}} by {{album.owner.username}}</strong>
+  <br>
+
+  
+  <div class="row">
+
+      <div class="thumbnail" *ngIf="album.cover_photo">
+        <!-- <img src="..." class="img-fluid" alt="Responsive image"> -->
+        
+        <!-- <a [routerLink]="['/album', album.id]" target="_blank"> -->
+
+
+          <div>
+            Cover Photo
+          </div>
+          <img [src] = "this.SERVER_BASE_URL +  album.cover_photo" class="rounded mx-auto d-block" alt="Lights" style="width:100%">
+          <div class="caption">
+            <div *ngIf="edit">
+              <!-- <form #albumForm="ngForm" style="align-items: center; align-self: center;" (ngSubmit)="addAlbum(albumForm)"> -->
+                <mat-form-field>
+                  <mat-label>Description</mat-label>  
+                  <input matInput placeholder="Description" name="description" [(ngModel)]="description" requierd>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Privacy</mat-label>
+                    <mat-select [(value)]="is_private">
+                      <mat-option value=false>Public</mat-option>
+                      <mat-option value=true>Private</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                  Updated Cover Photo (Optional):<br>
+                  <input type="file" name="cover_photo" (change)="onCoverPhotoChanged($event)" [(ngModel)]="cover_photo" #fileInput required>
+
+                  <div *ngIf="albumMessage">
+                    <mat-error>{{albumMessage}}</mat-error>
+                  </div>
+                <button style="align-self: center; width:50%" (click)="update()" type="submit" mat-raised-button color="warn">Update Album</button>
+              <!-- </form> -->
+              <br><br>
+              <h3>Add New Photo</h3>
+                <mat-label>Photo :</mat-label>
+                <input type="file" name="new_photo" (change)="onNewPhotoChanged($event)" [(ngModel)]="new_photo" #fileInput required>
+                <mat-form-field>
+                  <mat-label>Description (Optional)</mat-label>  
+                  <input matInput placeholder="Description" name="photoDescription" [(ngModel)]="photoDescription">
+                </mat-form-field>
+                <div *ngIf="photoMessage">
+                  <mat-error>{{photoMessage}}</mat-error>
+                </div>
+                <button style="align-self: center; width:50%" (click)="addPhoto(photoDescription)" type="submit" mat-raised-button color="warn">Add Photo</button>
+                
+            </div>
+            <div *ngIf="!edit">
+              <p>{{album.description}}</p>
+            </div>
+          </div>
+        <!-- </a> -->
+    </div>  
+  </div>
+  <div *ngIf="!album.photos.length">
+    <h6>No photos in album.</h6>
+
+  </div>
+  <div class="row" *ngFor="let photo of album.photos">
+    <div class="col-md-4">
+      <div class="thumbnail">
+       <img [src]="this.SERVER_BASE_URL + photo.photo" alt="Lights" style="width:100%">
+        <div class="caption"> 
+          <p>{{photo.description}}</p>
+          <button *ngIf="edit" (click)="deletePhoto(photo.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="edit">
+      <button style="align-self: center; width:50%" (click)="delete()" type="submit" mat-raised-button color="warn">Delete Album</button>
+    </div>
+  </div>
+  </body>
+</html>
