@@ -1,8 +1,13 @@
 # PhotoGalleryApplication
-Photo Gallery application implemented using Django(backend) and Angular(frontend). 
+Photo Gallery application implemented using Django(backend) and Angular(frontend).
+
+Dependencies:
+    backend: python3 (django)
+    frontend: angular
 
 1. Create a virtual environment on your machine. 
     ```
+    pip install virtualenv
     virtualenv -p python your_environment_name
     ```
     
@@ -14,31 +19,25 @@ Photo Gallery application implemented using Django(backend) and Angular(frontend
    
 3. Install the dependencies for the backend.
     ```
-    cd fsf_2019_screening_task1
+    cd ../PhotoGalleryApplication/backend/PhotoGallery
     pip install -r requirements.txt
     ```
-5. Migrate your database.
-    ```
-    python manage.py makemigrations
-    python manage.py migrate 
-    ``` 
-
-6. Run the live development server on your machine and test it.
+  
+4. Run the live development server on your machine and test it.
     ```
     python manage.py runserver
     ```
-   
-7. Run the live development server on your machine and test it.
-    ```
-    python manage.py runserver
-    ```
-8. Install Node Modules for Frontend AngularJS (node & npm must be installed )
+    Now backend server started, in new terminal follow step 5 & 6 to run frontend
+
+5. Install Node Modules for Frontend AngularJS (node & npm must be installed)
    ```
-   cd frontend/PhotoGalleryApplicaton
-   npm install --save   
+   cd ../PhotoGalleryApplication/frontend/PhotoGalleryApplicaton
+   npm install --save
+   npm install -g @angular/cli   
    ```
 
-9. To Run Frontend 
+6. To Run Frontend 
     ```
    ng serve -o
    ```   
+*replace python with python3 and pip with pip3 if you have multiple versions of python
