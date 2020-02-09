@@ -33,7 +33,15 @@ Dependencies:
    ```
    cd ../PhotoGalleryApplication/frontend/PhotoGalleryApplicaton
    npm install --save
+   ```
+   try
+   ```
    npm install -g @angular/cli   
+   ```
+   if there is any version mismatch error then,
+   ```
+   brew install yarn
+   yarn add global @angular/cli
    ```
 
 6. To Run Frontend 
