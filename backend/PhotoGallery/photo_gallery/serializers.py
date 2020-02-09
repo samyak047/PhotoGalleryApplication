@@ -90,7 +90,7 @@ class AlbumResponseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Album
 		fields = ('id', 'cover_photo', 'description', 'owner', 'is_private', 'likes')
-		depth=1
+		# depth=1
 
 # class AlbumSerializer(serializers.ModelSerializer):
 # 	class Meta:
