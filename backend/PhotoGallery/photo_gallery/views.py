@@ -87,7 +87,7 @@ class AlbumApiView(APIView):
 		user = service.authenticate_request(request)
 		if user is None:
 			return Response(status=401)
-		albums = Album.objects.all().order_by('-created_at')[:30]
+		albums = Album.objects.filter(is_private = False).order_by('-created_at')[:30]
 		return Response(AlbumResponseSerializer(albums, many=True).data)
 
 	def post(self, request):
@@ -114,6 +114,8 @@ class AlbumApiViewIdEndpoint(APIView):
 			album = Album.objects.get(pk=id)
 		except:
 			raise Http404("Album not found")
+		if album.is_private and user != album.owner:
+			return Response(status=401)
 		photos = album.photo_set.all()
 		photo_res = PhotoResponseSerializer(photos, many=True).data
 		album_res = AlbumResponseSerializer(album).data

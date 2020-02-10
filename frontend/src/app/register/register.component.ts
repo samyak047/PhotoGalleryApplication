@@ -62,8 +62,9 @@ export class RegisterComponent implements OnInit {
                   console.log("Authenticated")
                   this.tokenService.setToken(data['token']);
                   this.tokenService.setUserName(data['username'])
-                  this.tokenService.setUserId(data['user_id'])
+                  this.tokenService.setUserId(data['user_id']).subscribe(
                   this.router.navigate(['/feed'])
+                  )
                 }
                 else{
                   this.isAuthenticated = false;

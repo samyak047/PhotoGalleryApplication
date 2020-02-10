@@ -64,8 +64,10 @@ export class LoginComponent implements OnInit {
             console.log("Authenticated")
             this.tokenService.setToken(data['token']);
             this.tokenService.setUserName(data['username'])
-            this.tokenService.setUserId(data['user_id'])
-            this.router.navigate(['/feed'])
+            this.tokenService.setUserId(data['user_id']).subscribe(
+                  this.router.navigate(['/feed'])
+            )
+            //this.router.navigate(['/feed'])
           }
           else{
             this.isAuthenticated = false;
