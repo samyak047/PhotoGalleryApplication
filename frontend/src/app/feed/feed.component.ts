@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Urls } from 'app/services/urls';
 import { AlbumService } from 'app/services/album.service';
+import { TokenServiceService } from 'app/services/token-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -11,9 +13,10 @@ import { AlbumService } from 'app/services/album.service';
 export class FeedComponent implements OnInit {
   public albumData: any;  
   public SERVER_BASE_URL = 'http://localhost:8000';
-  constructor(private service: AlbumService) { }
+  constructor(private service: AlbumService, private router : Router) { }
 
   ngOnInit() {
+    this.router.navigate(['/feed'])
     this.service.getAlbums().subscribe((resp: Response) => {
       this.albumData = resp; 
       console.log(resp);

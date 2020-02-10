@@ -14,10 +14,11 @@ export class NavbarComponent implements OnInit {
 
     constructor(private tokenService : TokenServiceService, private router : Router) {
         this.username = tokenService.getUserName()
+        console.log("Username from navbar")
         console.log(this.username)
     }
     ngOnInit(): void {
-        this.username = tokenService.getUserName()
+        this.username = this.tokenService.getUserName()
 
     }
     logout(){

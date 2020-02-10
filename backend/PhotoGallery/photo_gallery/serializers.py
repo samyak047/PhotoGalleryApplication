@@ -90,7 +90,7 @@ class AlbumResponseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Album
 		fields = ('id', 'cover_photo', 'description', 'owner', 'is_private', 'likes')
-		# depth=1
+		depth=1
 
 # class AlbumSerializer(serializers.ModelSerializer):
 # 	class Meta:
@@ -103,7 +103,7 @@ class AlbumResponseSerializer(serializers.ModelSerializer):
 class PhotoRequestSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Photo
-		fields = ('photo', 'description', 'album', 'is_private', 'likes')
+		fields = ('photo', 'description', 'album', 'is_private')
 
 	def update(self, photo):
 		photo.photo = self.validated_data['photo']

@@ -27,6 +27,8 @@ export class UserProfileComponent implements OnInit {
   public profilePicture : File
   public edit: boolean
   public profile_data: any 
+  public private_albums: any
+  public public_albums: any
   public SERVER_BASE_URL = 'http://localhost:8000';
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
@@ -41,6 +43,8 @@ export class UserProfileComponent implements OnInit {
         this.email = data["user"]["email"]
         this.userId = +data["user"]['id']
         this.profilePicture = data["profile_picture"]
+        this.private_albums = data["private_albums"]
+        this.public_albums = data["public_albums"]        
         // console.log(this.form)
         this.edit = true
       }

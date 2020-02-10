@@ -45,8 +45,17 @@ class UserApiViewIdEndpoint(APIView):
 		except:
 			print("No token passed")
 		try:
-			user_detail_obj = UserDetails.objects.get(user = User.objects.get(pk = id))
-			return Response(UserDetailResponseSerializer(user_detail_obj).data)
+			requested_user = User.objects.get(pk = id)
+			user_detail_obj = UserDetails.objects.get(user = requested_user)
+			res = UserDetailResponseSerializer(user_detail_obj).data
+			print(res)
+			private_albums = []
+			if user.pk == id:
+				private_albums = Album.objects.filter(owner = user, is_private = True)
+			public_albums = Album.objects.filter(owner = requested_user, is_private = False)
+			res['private_albums'] = AlbumResponseSerializer(private_albums, many = True).data
+			res['public_albums'] = AlbumResponseSerializer(public_albums, many = True).data
+			return Response(res)
 		except:
 			raise Http404("User not found.")
 

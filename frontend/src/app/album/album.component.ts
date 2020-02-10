@@ -38,7 +38,7 @@ export class AlbumComponent implements OnInit {
     this.albumService.getAlbum(+this.album_id).subscribe((resp : Response)=> {
       console.log(resp);
       this.album = resp;
-      if(resp['owner'] === +this.tokenService.getUserId())
+      if(resp['owner']['id'] === +this.tokenService.getUserId())
         this.edit = true
       this.coverPhoto = resp['cover_photo']
       this.is_private = resp['is_private']
@@ -61,7 +61,9 @@ export class AlbumComponent implements OnInit {
             this.router.navigate(['/album/'+this.album_id])
         }
     )
-    this.router.navigate(['/album/'+this.album_id])  }
+    this.router.navigate(['/album/'+this.album_id])
+    this.ngOnInit()
+    }
 
   delete() {
     if(confirm("Are you sure to delete this album.")) {
@@ -97,6 +99,7 @@ addPhoto(photoDescription: string) {
         this.router.navigate(['/album/'+this.album_id])
         // this.album["photo"].push(data)
         // console.log(this.album)
+        this.ngOnInit()
       }
     )
   }
@@ -106,6 +109,7 @@ deletePhoto(id : number){
   if(confirm("Are you sure to delete this photo.")) {
     this.photoService.deletePhoto(id)
     this.router.navigate(['/album/'+this.album_id])
+    this.ngOnInit()
   }
 }
 

@@ -10,7 +10,7 @@
   
 </head>
 <body>
-
+  <app-navbar></app-navbar>
 <div class="container">
   <h2>Album Page</h2>
   <br>
@@ -63,7 +63,7 @@
                 <div *ngIf="photoMessage">
                   <mat-error>{{photoMessage}}</mat-error>
                 </div>
-                <button style="align-self: center; width:50%" (click)="addPhoto(photoDescription)" type="submit" mat-raised-button color="warn">Add Photo</button>
+                <button style="align-self: center; width:50%" (click)="addPhoto(photoDescription)" type="button" mat-raised-button color="warn">Add Photo</button>
                 
             </div>
             <div *ngIf="!edit">
